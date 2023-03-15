@@ -3,16 +3,19 @@
 #include <Sprite.hpp>
 #include <Input.hpp>
 
-class CarMovement : public Sprite
+class CarMovement : public Node2D
 {
-	GODOT_CLASS(CarMovement, Sprite);
+	GODOT_CLASS(CarMovement, Node2D);
 
 	float movementSpeed = 0;
+	float borderLeft = 0;
+	float borderRight = 0;
 
 public:
 	static void _register_methods();
 	void _init();
 	void _ready();
 	void _process(float delta);
+	void Movement(float delta);
 };
 

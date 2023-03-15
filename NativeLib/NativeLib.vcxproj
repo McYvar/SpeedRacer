@@ -131,11 +131,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CarMovement.cpp" />
+    <ClCompile Include="CollisionDetector.cpp" />
+    <ClCompile Include="EnemyCars.cpp" />
+    <ClCompile Include="EnemySpawner.cpp" />
     <ClCompile Include="NativeLib.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CarMovement.h" />
+    <ClInclude Include="CollisionDetector.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="EnemyCars.h" />
+    <ClInclude Include="EnemySpawner.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
