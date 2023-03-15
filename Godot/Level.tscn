@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/CarMovement.gdns" type="Script" id=1]
 [ext_resource path="res://assets/playerCar.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scripts/EnemyCars.gdns" type="Script" id=4]
 [ext_resource path="res://assets/EnemyCar.png" type="Texture" id=5]
 [ext_resource path="res://scripts/CollisionDetector.gdns" type="Script" id=6]
+[ext_resource path="res://scripts/EnemySpawner.gdns" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 34 )
@@ -28,29 +29,36 @@ movementSpeed = 500.0
 borderLeft = 270.0
 borderRight = 730.0
 
-[node name="Node2D" type="Node2D" parent="PlayerCarNode2D"]
+[node name="CollisionNode" type="Node2D" parent="PlayerCarNode2D"]
 script = ExtResource( 6 )
 
-[node name="Area2D" type="Area2D" parent="PlayerCarNode2D/Node2D"]
+[node name="Area2D" type="Area2D" parent="PlayerCarNode2D/CollisionNode"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCarNode2D/Node2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCarNode2D/CollisionNode/Area2D"]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="PlayerCarNode2D"]
 texture = ExtResource( 2 )
 
-[node name="EnemyCarNode2D" type="Node2D" parent="."]
-position = Vector2( 599, 540 )
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource( 7 )
+despawnHeight = 650.0
+carsPerSecond = 0.2
+increaseDifficultyPerTime = 2.5
+difficlutyIncreaseAmount = 0.05
+
+[node name="EnemyCarNode2D" type="Node2D" parent="EnemySpawner"]
+position = Vector2( 508, 652 )
 script = ExtResource( 4 )
 movementSpeed = -100.0
 spawnHeight = -100.0
 maxSpawnLeft = 270.0
 maxSpawnRight = 730.0
 
-[node name="Area2D" type="Area2D" parent="EnemyCarNode2D"]
+[node name="Area2D" type="Area2D" parent="EnemySpawner/EnemyCarNode2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCarNode2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawner/EnemyCarNode2D/Area2D"]
 shape = SubResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="EnemyCarNode2D"]
+[node name="Sprite" type="Sprite" parent="EnemySpawner/EnemyCarNode2D"]
 texture = ExtResource( 5 )

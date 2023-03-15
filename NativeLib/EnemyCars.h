@@ -3,10 +3,11 @@
 #include <Sprite.hpp>
 #include <Input.hpp>
 #include <RandomNumberGenerator.hpp>
+#include "CarMovement.h"
 
-class EnemyCars : public Sprite
+class EnemyCars : public Node2D
 {
-	GODOT_CLASS(EnemyCars, Sprite);
+	GODOT_CLASS(EnemyCars, Node2D);
 	float movementSpeed = 0;
 	float spawnHeight = 0;
 	float maxSpawnLeft = 0;

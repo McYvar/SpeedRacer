@@ -16,6 +16,10 @@ public:
 	void _init();
 	void _ready();
 	void _process(float delta);
+	CarMovement();
+	~CarMovement();
 	void Movement(float delta);
+	static void CrashCar();
+	static bool crashed;
 };
 

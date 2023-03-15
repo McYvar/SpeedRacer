@@ -25,6 +25,7 @@ void EnemyCars::_ready()
 
 void EnemyCars::_process(float delta)
 {
+	if (!CarMovement::crashed)
 	Movement(delta);
 }
 

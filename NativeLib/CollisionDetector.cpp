@@ -17,15 +17,15 @@ void CollisionDetector::_ready() {
         area->connect("area_exited", this, "_on_area_exited");
     }
     else Godot::print("Area wasn't found!");
+
 }
 
 
 void CollisionDetector::_on_area_entered(Area2D* area) {
     // Collision detected, do something
-    Godot::print("Collision detected with " + area->get_name());
+    Godot::print("Collision detected!");
+    CarMovement::CrashCar();
 }
 
 void CollisionDetector::_on_area_exited(Area2D* area) {
-    // Collision ended, do something
-    Godot::print("Collision ended with " + area->get_name());
 }
