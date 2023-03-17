@@ -3,6 +3,7 @@
 #include <Node2D.hpp>
 #include "EnemyCars.h"
 #include <vector>
+#include "ScreenText.h"
 
 class EnemySpawner : public Node2D
 {
@@ -13,6 +14,14 @@ class EnemySpawner : public Node2D
 	float increaseDifficultyPerTime;
 	float difficlutyIncreaseAmount;
 
+private:
+	Node2D* enemyCar;
+	vector<Node2D*> enemyCarVector;
+	float timePassed;
+	float totalTimePassed;
+	int difficultyIncreaseIterator;
+
+
 public:
 	static void _register_methods();
 	void _init();
@@ -20,12 +29,5 @@ public:
 	void _process(float delta);
 	void SpawnUnit();
 	void DeleteUnit(Node2D* unit);
-
-private:
-	Node2D* enemyCar;
-	vector<Node2D*> enemyCarVector;
-	float timePassed;
-	float totalTimePassed;
-	int difficultyIncreaseIterator;
 };
 

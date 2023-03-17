@@ -3,7 +3,8 @@
 #include "EnemyCars.h"
 #include "CollisionDetector.h"
 #include "EnemySpawner.h"
-
+#include "BackGround.h"
+#include "ScreenText.h"
 
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options * o)
 {
@@ -23,4 +24,6 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void* handle)
     register_class<EnemyCars>();
     register_class<CollisionDetector>();
     register_class<EnemySpawner>();
+    register_class<BackGround>();
+    register_class<ScreenText>();
 }

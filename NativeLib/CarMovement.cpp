@@ -11,6 +11,8 @@ void CarMovement::_register_methods()
 	register_property("movementSpeed", &CarMovement::movementSpeed, 0.0f);
 	register_property("borderLeft", &CarMovement::borderLeft, 0.0f);
 	register_property("borderRight", &CarMovement::borderRight, 0.0f);
+	register_property("friction", &CarMovement::friction, 0.0f);
+	register_property("maxSpeed", &CarMovement::maxSpeed, 0.0f);
 }
 
 void CarMovement::_init()
@@ -20,6 +22,7 @@ void CarMovement::_init()
 
 void CarMovement::_ready()
 {
+	myForce.SetFriction(friction);
 }
 
 void CarMovement::_process(float delta)
@@ -28,7 +31,7 @@ void CarMovement::_process(float delta)
 	Movement(delta);
 }
 
-CarMovement::CarMovement()
+CarMovement::CarMovement() : myForce(Forces(friction))
 {
 }
 
@@ -50,11 +53,31 @@ void CarMovement::Movement(float delta)
 	}
 
 	Vector2 currentPos = get_position();
-	set_position(Vector2(Math::clamp<float>(currentPos.x + movementDirection * movementSpeed * delta, borderLeft, borderRight), currentPos.y));
+	myForce.AddForce(Vector2(movementDirection * movementSpeed, 0));
+	myForce.Update(delta);
+	
+	if (get_position().x < borderLeft) {
+		set_position(Vector2(borderLeft, get_position().y));
+		myForce.Stop();
+	}
+	else if (get_position().x > borderRight) {
+		set_position(Vector2(borderRight, get_position().y));
+		myForce.Stop();
+	}
+	else {
+		set_position(get_position() + myForce.forceVector);
+	}
+
+
 }
 
 void CarMovement::CrashCar()
 {
-	Godot::print("Chrased!");
+	Godot::print("Crashed!");
 	crashed = true;
+}
+
+float CarMovement::GetMagnitude(Vector2 vector2)
+{
+	return Math::sqrt(vector2.x * vector2.x + vector2.y * vector2.y);
 }

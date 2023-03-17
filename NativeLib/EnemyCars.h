@@ -1,9 +1,10 @@
 #pragma once
 #include "Common.h"
-#include <Sprite.hpp>
+#include <Node2D.hpp>
 #include <Input.hpp>
 #include <RandomNumberGenerator.hpp>
 #include "CarMovement.h"
+#include "Forces.h"
 
 class EnemyCars : public Node2D
 {
@@ -12,6 +13,12 @@ class EnemyCars : public Node2D
 	float spawnHeight = 0;
 	float maxSpawnLeft = 0;
 	float maxSpawnRight = 0;
+	float friction = 0;
+
+private:
+	Ref<RandomNumberGenerator> random;
+	Forces myForces;
+	float horizontalDirection;
 
 public:
 	static void _register_methods();
@@ -23,7 +30,5 @@ public:
 	~EnemyCars();
 	void Movement(float delta);
 
-private:
-	Ref<RandomNumberGenerator> random;
 };
 

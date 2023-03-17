@@ -58,7 +58,6 @@ void EnemySpawner::_process(float delta)
 void EnemySpawner::SpawnUnit()
 {
 	Node2D* newCar = cast_to<Node2D>(enemyCar->duplicate());
-	newCar->set_name("car1");
 	newCar->set_position(Vector2(100, 100));
 	get_node("/root")->add_child(newCar);
 	enemyCarVector.push_back(newCar);
@@ -66,6 +65,7 @@ void EnemySpawner::SpawnUnit()
 
 void EnemySpawner::DeleteUnit(Node2D* unit)
 {
+	ScreenText::addOneToScore();
 	Godot::print("deleted unit");
 	unit->queue_free();
 	unit = nullptr;
