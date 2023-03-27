@@ -41,8 +41,7 @@ EnemyCars::EnemyCars() : myForces(Forces(0))
 }
 
 EnemyCars::~EnemyCars()
-{
-}
+= default;
 
 void EnemyCars::Movement(float delta)
 {

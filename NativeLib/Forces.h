@@ -14,7 +14,7 @@ public:
 	void Update(float delta);
 	void AddForce(Vector2 acceleration);
 	void Stop();
-	float GetMagnitude(Vector2 vector2);
+	float GetMagnitude(Vector2 vector2) const;
 	void SetFriction(float newFriction);
 	Vector2 forceVector;
 

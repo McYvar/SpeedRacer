@@ -20,7 +20,7 @@ void ScreenText::_ready()
 	score = cast_to<RichTextLabel>(get_node("Score"));
 }
 
-void ScreenText::_process(float delta)
+void ScreenText::_process(float delta) const
 {
 	if (CarMovement::crashed) {
 		youLose->set_text("You lost!\nFinal score: " + String::num(totalScore));

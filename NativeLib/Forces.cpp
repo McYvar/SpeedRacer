@@ -33,7 +33,7 @@ void Forces::Stop()
 	currentSpeed = Vector2::ZERO;
 }
 
-float Forces::GetMagnitude(Vector2 vector2)
+float Forces::GetMagnitude(Vector2 vector2) const
 {
 	return Math::sqrt(vector2.x * vector2.x + vector2.y * vector2.y);
 }

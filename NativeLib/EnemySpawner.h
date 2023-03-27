@@ -9,17 +9,17 @@ class EnemySpawner : public Node2D
 {
 	GODOT_CLASS(EnemySpawner, Node2D);
 
-	float deSpawnHeigt;
-	float carsPerSecond;
-	float increaseDifficultyPerTime;
-	float difficlutyIncreaseAmount;
+	float deSpawnHeigt = 0;
+	float carsPerSecond = 0;
+	float increaseDifficultyPerTime = 0;
+	float difficultyIncreaseAmount = 0;
 
 private:
-	Node2D* enemyCar;
+	Node2D* enemyCar = nullptr;
 	vector<Node2D*> enemyCarVector;
-	float timePassed;
-	float totalTimePassed;
-	int difficultyIncreaseIterator;
+	float timePassed = 0;
+	float totalTimePassed = 0;
+	int difficultyIncreaseIterator = 0;
 
 
 public:
@@ -28,6 +28,6 @@ public:
 	void _ready();
 	void _process(float delta);
 	void SpawnUnit();
-	void DeleteUnit(Node2D* unit);
+	void DeleteUnit(Node2D* unit) const;
 };
 

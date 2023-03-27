@@ -9,15 +9,15 @@ class ScreenText : public Control
 	GODOT_CLASS(ScreenText, Control);
 
 private:
-	RichTextLabel* score;
-	RichTextLabel* youLose;
+	RichTextLabel* score = nullptr;
+	RichTextLabel* youLose = nullptr;
 	static int totalScore;
 
 public:
 	static void _register_methods();
 	void _init();
 	void _ready();
-	void _process(float delta);
+	void _process(float delta) const;
 	static void addOneToScore();
 };
 

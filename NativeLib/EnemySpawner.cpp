@@ -10,7 +10,7 @@ void EnemySpawner::_register_methods()
 	register_property("despawnHeight", &EnemySpawner::deSpawnHeigt, 0.0f);
 	register_property("carsPerSecond", &EnemySpawner::carsPerSecond, 0.0f);
 	register_property("increaseDifficultyPerTime", &EnemySpawner::increaseDifficultyPerTime, 0.0f);
-	register_property("difficlutyIncreaseAmount", &EnemySpawner::difficlutyIncreaseAmount, 0.0f);
+	register_property("difficultyIncreaseAmount", &EnemySpawner::difficultyIncreaseAmount, 0.0f);
 }
 
 void EnemySpawner::_init()
@@ -32,7 +32,7 @@ void EnemySpawner::_process(float delta)
 	timePassed += delta;
 	totalTimePassed += delta;
 
-	// Start spawning units, progressivly gets harder over time
+	// Start spawning units, progressively gets harder over time
 	if (carsPerSecond * timePassed > 1) {
 		timePassed = 0;
 		SpawnUnit();
@@ -40,7 +40,7 @@ void EnemySpawner::_process(float delta)
 
 	if (totalTimePassed / difficultyIncreaseIterator > increaseDifficultyPerTime) {
 		difficultyIncreaseIterator++;
-		carsPerSecond += difficlutyIncreaseAmount;
+		carsPerSecond += difficultyIncreaseAmount;
 		Godot::print(String::num(carsPerSecond));
 	}
 
@@ -63,7 +63,7 @@ void EnemySpawner::SpawnUnit()
 	enemyCarVector.push_back(newCar);
 }
 
-void EnemySpawner::DeleteUnit(Node2D* unit)
+void EnemySpawner::DeleteUnit(Node2D* unit) const
 {
 	ScreenText::addOneToScore();
 	Godot::print("deleted unit");

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/CarMovement.gdns" type="Script" id=1]
 [ext_resource path="res://assets/playerCar.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://scripts/EnemySpawner.gdns" type="Script" id=7]
 [ext_resource path="res://scripts/BackGround.gdns" type="Script" id=8]
 [ext_resource path="res://scripts/ScreenText.gdns" type="Script" id=9]
+[ext_resource path="res://Level.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Diedfont.tres" type="DynamicFont" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 34 )
@@ -16,7 +18,11 @@ extents = Vector2( 16, 34 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 34 )
 
-[sub_resource type="Theme" id=3]
+[sub_resource type="Theme" id=5]
+default_font = ExtResource( 10 )
+
+[sub_resource type="Theme" id=6]
+default_font = ExtResource( 11 )
 
 [node name="Level" type="Node"]
 
@@ -46,7 +52,6 @@ script = ExtResource( 7 )
 despawnHeight = 630.0
 carsPerSecond = 0.2
 increaseDifficultyPerTime = 2.5
-difficlutyIncreaseAmount = 0.05
 
 [node name="EnemyCarNode2D" type="Node2D" parent="EnemySpawner"]
 script = ExtResource( 4 )
@@ -95,18 +100,19 @@ script = ExtResource( 9 )
 
 [node name="Score" type="RichTextLabel" parent="Control"]
 margin_left = -1.0
-margin_right = 109.0
-margin_bottom = 35.0
-text = "Score: "
+margin_right = 158.0
+margin_bottom = 38.0
+theme = SubResource( 5 )
+text = "Score:"
 
 [node name="Lose" type="RichTextLabel" parent="Control"]
 anchor_right = 0.29
-margin_left = 454.0
-margin_top = 261.0
-margin_right = 543.4
-margin_bottom = 311.0
+margin_left = 95.0
+margin_top = 167.0
+margin_right = 755.4
+margin_bottom = 580.0
 grow_horizontal = 0
-theme = SubResource( 3 )
+theme = SubResource( 6 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "You died!
 Final score:"
