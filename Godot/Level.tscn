@@ -30,11 +30,11 @@ default_font = ExtResource( 11 )
 process_priority = 6
 position = Vector2( 499, 533 )
 script = ExtResource( 1 )
-movementSpeed = 17.0
+movementSpeed = 50.0
 borderLeft = 270.0
 borderRight = 730.0
-friction = 9.0
-maxSpeed = 2.0
+friction = 20.0
+maxSpeed = 100.0
 
 [node name="CollisionNode" type="Node2D" parent="PlayerCarNode2D"]
 script = ExtResource( 6 )
@@ -49,17 +49,18 @@ texture = ExtResource( 2 )
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource( 7 )
-despawnHeight = 630.0
-carsPerSecond = 0.2
-increaseDifficultyPerTime = 2.5
+despawnHeight = 700.0
+carsPerSecond = 0.1
+increaseDifficultyPerTime = 0.5
+difficultyIncreaseAmount = 0.05
 
 [node name="EnemyCarNode2D" type="Node2D" parent="EnemySpawner"]
 script = ExtResource( 4 )
-movementSpeed = 7.0
+movementSpeed = 10.0
 spawnHeight = -100.0
 maxSpawnLeft = 270.0
 maxSpawnRight = 730.0
-friction = 0.1
+friction = 0.4
 
 [node name="Area2D" type="Area2D" parent="EnemySpawner/EnemyCarNode2D"]
 
